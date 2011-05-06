@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+# Project Euler problem 43
+
+from math import factorial
+
+digits = list(range(10))
+
+i = 0
+while i < factorial(9):
+    string = ''.join([str(d) for d in digits])
+    print(string)
+    
+    if int(''.join([
+    
+
+    # Find the largest index k s.t. digits[k] < digits[k+1]
+    j = 0
+    k = j
+    while j < len(digits) - 1:
+        if digits[j] < digits[j+1]:
+            k = j
+        j += 1
+
+    # Find the largest index l s.t. digits[k] < digits[l]
+    j = 0
+    l = j
+    while j < len(digits):
+        if digits[k] < digits[j]:
+            l = j
+        j += 1
+
+    # Swap digits[k] with digits[l]
+    digits[k], digits[l] = digits[l], digits[k]
+
+    # Reverse sequence from digits[k+1] to end
+    digits[(k+1):len(digits)] = digits[(k+1):len(digits)][::-1]
+
+    i += 1
+
